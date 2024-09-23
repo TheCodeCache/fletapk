@@ -47,13 +47,13 @@ jobs:
         unzip cmdline-tools.zip -d $ANDROID_HOME/cmdline-tools
         rm cmdline-tools.zip
 
-    - name: Accept Android SDK Licenses
-      run: |
-        yes | $ANDROID_HOME/cmdline-tools/bin/sdkmanager --licenses
-
     - name: Install Android SDK Platform Tools
       run: |
         $ANDROID_HOME/cmdline-tools/bin/sdkmanager "platform-tools" "platforms;android-30" # You may need to specify other platforms
+
+    - name: Accept Android SDK Licenses
+      run: |
+        yes | $ANDROID_HOME/cmdline-tools/bin/sdkmanager --licenses
 
     - name: Setup Flutter ${{ env.FLUTTER_VERSION }}
       uses: subosito/flutter-action@v2
